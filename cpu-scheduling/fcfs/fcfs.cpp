@@ -41,6 +41,33 @@ int main(){
     for(int i=0;i<n;i++){
         cout<<"p"<<pid[i]<<"\t"<<at[i]<<"\t"<<bt[i]<<"\t"<<ct[i]<<"\t"<<tat[i]<<"\t"<<wt[i]<<endl;
     }
+
+    cout<<"\nGantt Chart:\n";
+    cout<<" ";
+    for(int i=0;i<n;i++){
+        cout<<"----------";
+    }
+    cout<<"-\n";
+
+    cout<<"|";
+    for(int i=0;i<n;i++){
+        cout<<"   p"<<pid[i]<<"   |";
+    }
+    cout<<"\n";
+
+    cout<<" ";
+    for(int i=0;i<n;i++){
+        cout<<"----------";
+    }
+    cout<<"-\n";
+
+    cout<<at[0];
+    for(int i=0;i<n;i++){
+        cout<<"       "<<ct[i];
+    }
+
+    cout<<endl;
+
     cout<<"\nAverage Waiting Time: "<<avgWT <<endl;
     cout<<"Avarage Turnaround Time: "<<avgTAT<<endl;
     return 0;
