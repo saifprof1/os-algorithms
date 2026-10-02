@@ -27,10 +27,21 @@ int main(){
         wt[i] = tat[i] - bt[i];
     }
 
+    double totalWT =0;
+    double totalTAT =0;
+    for(int i=0;i<n;i++){
+        totalWT += wt[i];
+        totalTAT += tat[i];
+    }
+    double avgWT = totalWT/n;
+    double avgTAT = totalTAT/n;
+
     cout<<"\nFCFS Scheduling Rsult:\n";
     cout<<"PID\tAT\tBt\tCT\tTAT\tWT\n";
     for(int i=0;i<n;i++){
         cout<<"p"<<pid[i]<<"\t"<<at[i]<<"\t"<<bt[i]<<"\t"<<ct[i]<<"\t"<<tat[i]<<"\t"<<wt[i]<<endl;
     }
+    cout<<"\nAverage Waiting Time: "<<avgWT <<endl;
+    cout<<"Avarage Turnaround Time: "<<avgTAT<<endl;
     return 0;
 }
