@@ -9,6 +9,7 @@ int main(){
     int pid[n], at[n], bt[n];
     int ct[n], tat[n], wt[n];
     bool comleted[n] = {false};
+    int executionOrder[n];
 
     for(int i=0;i<n;i++){
         pid[i]= i+1;
@@ -40,6 +41,7 @@ int main(){
         tat[shortest] = ct[shortest] - at[shortest];
         wt[shortest] = tat[shortest] - bt[shortest];
 
+        executionOrder[completedCount] = shortest;
         comleted[shortest] = true;
         completedCount++;
     }
@@ -61,6 +63,38 @@ int main(){
     for(int i=0;i<n;i++){
         cout<<"p"<<pid[i]<<"\t"<<at[i]<<"\t"<<bt[i]<<"\t"<<ct[i]<<"\t"<<tat[i]<<"\t"<<wt[i]<<endl;
     }
+
+cout << "\nGantt Chart:\n";
+
+cout << " ";
+for (int i = 0; i < n; i++) {
+    cout << "----------";
+}
+cout << "-\n";
+
+cout << "|";
+for (int i = 0; i < n; i++) {
+    int index = executionOrder[i];
+
+    cout << "   P" << pid[index] << "   |";
+}
+cout << "\n";
+
+cout << " ";
+for (int i = 0; i < n; i++) {
+    cout << "----------";
+}
+cout << "-\n";
+
+cout << "0";
+
+for (int i = 0; i < n; i++) {
+    int index = executionOrder[i];
+
+    cout << "        " << ct[index];
+}
+
+cout << endl;
 
     cout<<"\nAvarage Waiting Time: "<<avgWt <<endl;
     cout<<"Avarage Turnaround Time: "<<avgTAT <<endl;
