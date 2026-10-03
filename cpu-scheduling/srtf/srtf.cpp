@@ -18,6 +18,8 @@ int main(){
 
     int currentTime = 0;
     int completed =0;
+    int timeline[1000];
+    int timelineSize = 0;
 
     while(completed<n){
         int shortest = -1;
@@ -33,6 +35,8 @@ int main(){
             currentTime++;
             continue;
         }
+        timeline[timelineSize] = shortest;
+        timelineSize++;
         remaining[shortest]--;
         currentTime++;
 
@@ -61,6 +65,25 @@ int main(){
 
     for(int i=0; i<n; i++){
         cout<<"P"<<pid[i]<<"\t"<<at[i]<<"\t"<<bt[i]<<"\t"<<ct[i]<<"\t"<<tat[i]<<"\t"<<wt[i]<<endl;
+    }
+
+    cout<<"\nGantt Chart:\n";
+    cout<< "| P"<<pid[timeline[0]];
+
+    for(int i=1;i<timelineSize;i++){
+        if(timeline[i] !=timeline[i-1]){
+            cout<<" | P"<< pid[timeline[i]];
+        }
+    }
+
+    cout<<" |\n";
+    cout<<"0";
+    int time =0;
+    for(int i=0;i<timelineSize;i++){
+        time++;
+        if(i== timelineSize -1 || timeline[i] != timeline[i+1]){
+            cout<<"   "<<time;
+        }
     }
 
     cout<<"\nAvarage Waiting Time: "<< avgWt<<endl;
