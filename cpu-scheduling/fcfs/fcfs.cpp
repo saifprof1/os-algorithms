@@ -16,6 +16,16 @@ int main(){
         cin>>bt[i];
     }
 
+    for(int i=0;i<n-1;i++){
+        for(int j=0;j<n-i-1;j++){
+            if(at[j]>at[j+1]){
+                swap(at[j],at[j+1]);
+                swap(bt[j],bt[j+1]);
+                swap(pid[j],pid[j+1]);
+            }
+        }
+    }
+
     int cTime = 0;
     for(int i=0;i<n;i++){
         if(cTime<at[i]){
